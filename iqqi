@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""
+IQQI-AGENT CLI launcher.
+
+Compatibility note: the runtime module is still hermes_cli during this phase,
+but this wrapper behaves like the installed `iqqi` command.
+"""
+
+if __name__ == "__main__":
+    from hermes_cli.main import main
+    main()

@@ -270,6 +270,9 @@ all = [
 ]
 
 [project.scripts]
+iqqi = "hermes_cli.main:main"
+iqqi-agent = "run_agent:main"
+iqqi-acp = "acp_adapter.entry:main"
 hermes = "hermes_cli.main:main"
 hermes-agent = "run_agent:main"
 hermes-acp = "acp_adapter.entry:main"

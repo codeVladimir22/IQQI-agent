@@ -14,19 +14,21 @@
   <a href="#phase-1-branding-scope"><img src="https://img.shields.io/badge/Phase-Initial%20Branding-7C3AED?style=for-the-badge" alt="Initial branding phase"></a>
 </p>
 
-IQQI-AGENT is the first branding pass over the Hermes Agent fork. The goal of this phase is to make the product read as IQQI while preserving the proven Hermes runtime underneath: package names, Python modules, entrypoints, environment variables, installers, and dependency wiring stay intact until we intentionally plan a deeper migration.
+IQQI-AGENT is the first branding pass over the Hermes Agent fork. The goal of this phase is to make the product read as IQQI while preserving the proven Hermes runtime underneath: package names, Python modules, environment variables, profile paths, and dependency wiring stay intact until we intentionally plan a deeper migration.
 
-That means the current executable commands are still Hermes-compatible during this phase:
+The preferred commands now use the IQQI name:
 
 ```bash
-hermes              # interactive CLI
-hermes model        # choose provider and model
-hermes tools        # configure enabled tools
-hermes gateway      # start the messaging gateway
-hermes setup        # setup wizard
-hermes update       # update flow
-hermes doctor       # diagnostics
+iqqi              # interactive CLI
+iqqi model        # choose provider and model
+iqqi tools        # configure enabled tools
+iqqi gateway      # start the messaging gateway
+iqqi setup        # setup wizard
+iqqi update       # update flow
+iqqi doctor       # diagnostics
 ```
+
+The legacy `hermes` commands are still installed as compatibility aliases during this migration phase.
 
 ## Phase 1 Branding Scope
 
@@ -44,7 +46,7 @@ Left untouched for later:
 
 - Python package name: `hermes-agent`.
 - Python module/package paths: `hermes_cli`, `hermes_constants`, `agent`, `gateway`, etc.
-- CLI entrypoints: `hermes`, `hermes-agent`, `hermes-acp`.
+- Legacy CLI aliases: `hermes`, `hermes-agent`, `hermes-acp`.
 - Environment variables and profile paths: `HERMES_HOME`, `%LOCALAPPDATA%\hermes`, `~/.hermes`.
 - Dependency groups and lockfiles.
 - Installer internals that assume the Hermes runtime layout.
@@ -66,22 +68,22 @@ IQQI-AGENT keeps the Hermes Agent feature set as the base:
 
 ## Install Notes
 
-Until the deeper runtime rename is complete, use the existing Hermes install paths and commands. This is deliberate.
+Until the deeper runtime rename is complete, IQQI-AGENT keeps the existing Hermes runtime paths internally, but the user-facing CLI is now `iqqi`. Legacy `hermes` commands remain available as compatibility aliases.
 
 ```bash
-curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.sh | bash
 ```
 
 Windows PowerShell:
 
 ```powershell
-iex (irm https://hermes-agent.nousresearch.com/install.ps1)
+iex (irm https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.ps1)
 ```
 
 After install:
 
 ```bash
-hermes
+iqqi
 ```
 
 For local development:
@@ -90,15 +92,16 @@ For local development:
 git clone https://github.com/codeVladimir22/IQQI-agent.git
 cd IQQI-agent
 ./setup-hermes.sh
-./hermes
+./iqqi
 ```
 
 ## Migration Plan
 
 1. Initial IQQI branding: replace visible Hermes/Nous presentation while preserving runtime compatibility.
-2. Design pass: refine desktop/docs palette, marks, screenshots, and copy into a coherent IQQI-AGENT identity.
-3. Runtime rename analysis: map every `hermes` identifier to determine which are safe aliases, which require migrations, and which should remain compatibility shims.
-4. Installer and package rename: only after dependency, update, ACP, desktop, docs, and profile migration paths are tested.
+2. Compatible command rename: add `iqqi`, `iqqi-agent`, and `iqqi-acp` while keeping `hermes*` aliases.
+3. Design pass: refine desktop/docs palette, marks, screenshots, and copy into a coherent IQQI-AGENT identity.
+4. Runtime path migration analysis: decide when `HERMES_HOME` and `%LOCALAPPDATA%\hermes` can move to IQQI paths with data migration.
+5. Package rename: only after dependency, update, ACP, desktop, docs, and profile migration paths are tested.
 
 ## Development
 
