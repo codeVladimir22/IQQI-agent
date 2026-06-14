@@ -5775,7 +5775,7 @@ def _update_via_zip(args):
         )
         sys.exit(1)
     zip_url = (
-        f"https://install.iqqi.ai/archive/refs/heads/{branch}.zip"
+        f"https://github.com/codeVladimir22/IQQI-agent/archive/refs/heads/{branch}.zip"
     )
 
     print("→ Downloading latest version...")
@@ -6179,12 +6179,12 @@ def _discard_stashed_changes(
 # =========================================================================
 
 OFFICIAL_REPO_URLS = {
-    "https://git.iqqi.ai/IQQI-agent.git",
-    "git@git.iqqi.ai:iqqi/IQQI-agent.git",
-    "https://git.iqqi.ai/IQQI-agent",
-    "git@git.iqqi.ai:iqqi/IQQI-agent",
+    "https://github.com/codeVladimir22/IQQI-agent.git",
+    "git@github.com:codeVladimir22/IQQI-agent.git",
+    "https://github.com/codeVladimir22/IQQI-agent",
+    "git@github.com:codeVladimir22/IQQI-agent",
 }
-OFFICIAL_REPO_URL = "https://git.iqqi.ai/IQQI-agent.git"
+OFFICIAL_REPO_URL = "https://github.com/codeVladimir22/IQQI-agent.git"
 SKIP_UPSTREAM_PROMPT_FILE = ".skip_upstream_prompt"
 
 
@@ -6332,7 +6332,7 @@ def _sync_with_upstream_if_needed(git_cmd: list[str], cwd: Path) -> None:
             print("→ Adding upstream remote...")
             if _add_upstream_remote(git_cmd, cwd):
                 print(
-                    "  ✓ Added upstream: https://git.iqqi.ai/IQQI-agent.git"
+                    "  ✓ Added upstream: https://github.com/codeVladimir22/IQQI-agent.git"
                 )
                 has_upstream = True
             else:
@@ -6340,7 +6340,7 @@ def _sync_with_upstream_if_needed(git_cmd: list[str], cwd: Path) -> None:
                 return
         else:
             print(
-                "  Skipped. Run 'git remote add upstream https://git.iqqi.ai/IQQI-agent.git' to add later."
+                "  Skipped. Run 'git remote add upstream https://github.com/codeVladimir22/IQQI-agent.git' to add later."
             )
             _mark_skip_upstream_prompt()
             return
@@ -8236,7 +8236,7 @@ def _cmd_update_impl(args, gateway_mode: bool):
                 return
             print("✗ Not a git repository. Please reinstall:")
             print(
-                "  curl -fsSL https://install.iqqi.ai/agent.sh | bash"
+                "  curl -fsSL https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.sh | bash"
             )
             sys.exit(1)
 

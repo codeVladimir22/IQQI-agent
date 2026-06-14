@@ -1,6 +1,28 @@
 # IQQI-AGENT Distribution
 
-This phase moves public installation and bootstrap URLs behind IQQI-owned domains.
+This document tracks the future IQQI-owned distribution layer. During initial
+validation, the active install path uses GitHub directly so the CLI can be
+tested before DNS and proxy infrastructure exist.
+
+## Temporary validation commands
+
+Linux, macOS, WSL, VPS:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.sh | bash
+```
+
+Windows PowerShell:
+
+```powershell
+iex (irm https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.ps1)
+```
+
+Windows CMD:
+
+```cmd
+curl -fsSL https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.cmd -o install.cmd && install.cmd && del install.cmd
+```
 
 ## What is required
 
@@ -14,7 +36,7 @@ To make the public URLs work, IQQI needs three pieces:
 
 If DNS is not ready, deploy the proxy under a provider URL first, such as a Cloudflare `*.workers.dev` URL, then set `IQQI_INSTALL_BASE_URL` to that temporary endpoint for tests.
 
-## Public install commands
+## Future public install commands
 
 Linux, macOS, WSL, VPS:
 

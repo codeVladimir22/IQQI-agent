@@ -1,7 +1,7 @@
 /**
  * Pure helpers for choosing a remote URL during passive update checks.
  *
- * A public install can end up with `origin=git@git.iqqi.ai:iqqi/IQQI-agent.git`.
+ * A public install can end up with `origin=git@github.com:codeVladimir22/IQQI-agent.git`.
  * If the user's GitHub SSH key is FIDO2/passkey-backed, a background `git fetch
  * origin` triggers an unexplained hardware-touch prompt. For passive checks
  * against the official repo we substitute the public HTTPS `ls-remote` path,
@@ -12,8 +12,8 @@
  * testable without booting Electron (main.cjs requires('electron') at load).
  */
 
-const OFFICIAL_REPO_HTTPS_URL = 'https://git.iqqi.ai/IQQI-agent.git'
-const OFFICIAL_REPO_CANONICAL = 'git.iqqi.ai/iqqi-agent'
+const OFFICIAL_REPO_HTTPS_URL = 'https://github.com/codeVladimir22/IQQI-agent.git'
+const OFFICIAL_REPO_CANONICAL = 'github.com/codevladimir22/iqqi-agent'
 
 // Normalize common GitHub remote URL forms to `host/owner/repo` (lowercased,
 // no trailing slash, no .git suffix) so SSH and HTTPS forms of the same repo
@@ -23,12 +23,8 @@ function canonicalGitHubRemote(url) {
   let value = String(url).trim()
   if (value.startsWith('git@github.com:')) {
     value = `github.com/${value.slice('git@github.com:'.length)}`
-  } else if (value.startsWith('git@git.iqqi.ai:iqqi/')) {
-    value = `git.iqqi.ai/${value.slice('git@git.iqqi.ai:iqqi/'.length)}`
   } else if (value.startsWith('ssh://git@github.com/')) {
     value = `github.com/${value.slice('ssh://git@github.com/'.length)}`
-  } else if (value.startsWith('ssh://git@git.iqqi.ai/iqqi/')) {
-    value = `git.iqqi.ai/${value.slice('ssh://git@git.iqqi.ai/iqqi/'.length)}`
   } else {
     try {
       const parsed = new URL(value)

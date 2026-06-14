@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://install.iqqi.ai"><img src="https://img.shields.io/badge/Install-IQQI--AGENT-0B1020?style=for-the-badge" alt="IQQI-AGENT installer"></a>
+  <a href="https://github.com/codeVladimir22/IQQI-agent"><img src="https://img.shields.io/badge/Repo-codeVladimir22%2FIQQI--agent-0B1020?style=for-the-badge" alt="Repository"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-189BFF?style=for-the-badge" alt="License: MIT"></a>
   <a href="#phase-1-branding-scope"><img src="https://img.shields.io/badge/Phase-Initial%20Branding-7C3AED?style=for-the-badge" alt="Initial branding phase"></a>
 </p>
@@ -71,16 +71,16 @@ IQQI-AGENT keeps the Hermes Agent feature set as the base:
 Until the deeper runtime rename is complete, IQQI-AGENT keeps the existing Hermes runtime paths internally, but the user-facing CLI is now `iqqi`. Legacy `hermes` commands remain available as compatibility aliases.
 
 ```bash
-curl -fsSL https://install.iqqi.ai/agent.sh | bash
+curl -fsSL https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.sh | bash
 ```
 
 Windows PowerShell:
 
 ```powershell
-iex (irm https://install.iqqi.ai/agent.ps1)
+iex (irm https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.ps1)
 ```
 
-Distribution endpoint requirements are tracked in [docs/iqqi-distribution.md](docs/iqqi-distribution.md).
+Future IQQI-owned distribution endpoint requirements are tracked in [docs/iqqi-distribution.md](docs/iqqi-distribution.md).
 
 After install:
 
@@ -91,7 +91,7 @@ iqqi
 For local development:
 
 ```bash
-git clone https://git.iqqi.ai/IQQI-agent.git
+git clone https://github.com/codeVladimir22/IQQI-agent.git
 cd IQQI-agent
 ./setup-hermes.sh
 ./iqqi
