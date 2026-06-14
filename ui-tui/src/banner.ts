@@ -53,21 +53,21 @@ const LOGO_ART = [
 ]
 
 const CADUCEUS_ART = [
-  '          ╭────────────────────╮          ',
-  '          │      IQQI-AGENT     │          ',
-  '          ╰────────────────────╯          ',
-  '                    ◆                    ',
-  '                 ◆  │  ◆                 ',
-  '              ◆─────┼─────◆              ',
-  '                 ◆  │  ◆                 ',
-  '                    ◆                    ',
-  '              intelligence layer          ',
-  '              pricing · dashboards        ',
-  '              client operations           ',
+  '          ╔══════════════════════╗          ',
+  '          ║ ████  ████████  ████║          ',
+  '          ║ ████            ████║          ',
+  '          ║ ████      ◆     ████║          ',
+  '          ║ ████     ◆◆◆    ████║          ',
+  '          ║ ████      ◆   █████ ║          ',
+  '          ║ ████        ██████  ║          ',
+  '          ║ ████████████  ████  ║          ',
+  '          ║ █████████████       ║          ',
+  '          ╚══════════════════════╝          ',
   '                                            ',
-  '            ready for orchestration       ',
-  '                                            ',
-  '                 IQQI ecosystem           '
+  '                 IQQI-AGENT                 ',
+  '              pricing intelligence           ',
+  '              client dashboards              ',
+  '                 IQQI ecosystem              '
 ]
 
 const LOGO_GRADIENT = [0, 0, 1, 1, 2, 2] as const

@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="IQQI-AGENT">
-  <rect width="256" height="256" rx="44" fill="#0B1020"/>
-  <path d="M36 52h184v152H36z" rx="18" fill="#101828"/>
-  <path d="M54 74h148v108H54z" fill="#0B1020" stroke="#189BFF" stroke-width="6"/>
-  <path d="M76 105l24 23-24 23" fill="none" stroke="#75D7FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
-  <path d="M116 158h58" fill="none" stroke="#F8FAFC" stroke-linecap="round" stroke-width="14"/>
-  <path d="M58 54h140" fill="none" stroke="#0B5CFF" stroke-linecap="round" stroke-width="8"/>
-  <text x="128" y="224" fill="#F8FAFC" font-family="JetBrains Mono, Consolas, monospace" font-size="28" font-weight="700" text-anchor="middle">IQQI</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="IQQI-AGENT">
+  <rect width="200" height="200" fill="#1F43D8"/>
+  <path fill="#F8FAFC" d="M20 54 56 19v129l80 1 36 35H56l-36-36z"/>
+  <path fill="#F8FAFC" d="M65 19h70v36H65z"/>
+  <path fill="#F8FAFC" d="m145 19 35 35v95l-35-36z"/>
+  <path fill="#F8FAFC" d="m104 92 21 21-21 21-21-21z"/>
+  <path fill="#F8FAFC" d="m132 116 49 49-21 21-49-49z"/>
 </svg>
