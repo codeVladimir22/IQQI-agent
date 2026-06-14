@@ -3,15 +3,15 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Hermes Agent',
-  tagline: 'The self-improving AI agent',
+  title: 'IQQI-AGENT',
+  tagline: 'Agentic command line and desktop workflow layer',
   favicon: 'img/favicon.ico',
 
-  url: 'https://hermes-agent.nousresearch.com',
+  url: 'https://github.com/codeVladimir22/IQQI-agent',
   baseUrl: '/docs/',
 
-  organizationName: 'NousResearch',
-  projectName: 'hermes-agent',
+  organizationName: 'codeVladimir22',
+  projectName: 'IQQI-agent',
 
   onBrokenLinks: 'warn',
 
@@ -90,7 +90,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',  // Docs at the root of /docs/
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/NousResearch/hermes-agent/edit/main/website/',
+          editUrl: 'https://github.com/codeVladimir22/IQQI-agent/edit/main/website/',
         },
         blog: false,
         theme: {
@@ -113,10 +113,10 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'Hermes Agent',
+      title: 'IQQI-AGENT',
       logo: {
-        alt: 'Hermes Agent',
-        src: 'img/logo.png',
+        alt: 'IQQI-AGENT',
+        src: 'img/iqqi-logo.svg',
       },
       items: [
         {
@@ -131,7 +131,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://hermes-agent.nousresearch.com/desktop',
+          href: 'https://github.com/codeVladimir22/IQQI-agent',
           label: 'Download',
           position: 'left',
         },
@@ -140,18 +140,18 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://hermes-agent.nousresearch.com',
-          label: 'Home',
+          href: 'https://github.com/codeVladimir22/IQQI-agent',
+          label: 'Repo',
           position: 'right',
         },
         {
-          href: 'https://github.com/NousResearch/hermes-agent',
+          href: 'https://github.com/codeVladimir22/IQQI-agent',
           label: 'GitHub',
           position: 'right',
         },
         {
-          href: 'https://discord.gg/NousResearch',
-          label: 'Discord',
+          href: 'https://github.com/codeVladimir22/IQQI-agent/issues',
+          label: 'Issues',
           position: 'right',
         },
       ],
@@ -171,21 +171,20 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            { label: 'Discord', href: 'https://discord.gg/NousResearch' },
-            { label: 'GitHub Issues', href: 'https://github.com/NousResearch/hermes-agent/issues' },
+            { label: 'GitHub Issues', href: 'https://github.com/codeVladimir22/IQQI-agent/issues' },
             { label: 'Skills Hub', href: 'https://agentskills.io' },
           ],
         },
         {
           title: 'More',
           items: [
-            { label: 'Desktop Download', href: 'https://hermes-agent.nousresearch.com/desktop' },
-            { label: 'GitHub', href: 'https://github.com/NousResearch/hermes-agent' },
-            { label: 'Nous Research', href: 'https://nousresearch.com' },
+            { label: 'Repository', href: 'https://github.com/codeVladimir22/IQQI-agent' },
+            { label: 'Upstream Runtime', href: 'https://github.com/NousResearch/hermes-agent' },
+            { label: 'Phase 1 Scope', href: 'https://github.com/codeVladimir22/IQQI-agent#phase-1-branding-scope' },
           ],
         },
       ],
-      copyright: `Built by <a href="https://nousresearch.com">Nous Research</a> · MIT License · ${new Date().getFullYear()}`,
+      copyright: `IQQI-AGENT · Hermes-compatible runtime · MIT License · ${new Date().getFullYear()}`,
     },
     prism: {
       theme: prismThemes.github,

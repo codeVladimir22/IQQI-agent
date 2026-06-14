@@ -1,10 +1,10 @@
 {
   "name": "hermes",
-  "productName": "Hermes",
+  "productName": "IQQI-AGENT",
   "private": true,
   "version": "0.15.1",
-  "description": "Native desktop shell for Hermes Agent.",
-  "author": "Nous Research",
+  "description": "Native desktop shell for IQQI-AGENT, powered by the Hermes Agent runtime.",
+  "author": "IQQI",
   "type": "module",
   "main": "electron/main.cjs",
   "engines": {
@@ -134,17 +134,17 @@
   "build": {
     "electronVersion": "40.9.3",
     "appId": "com.nousresearch.hermes",
-    "productName": "Hermes",
+    "productName": "IQQI-AGENT",
     "executableName": "Hermes",
     "protocols": [
       {
-        "name": "Hermes Protocol",
+        "name": "IQQI-AGENT Protocol",
         "schemes": [
           "hermes"
         ]
       }
     ],
-    "artifactName": "Hermes-${version}-${os}-${arch}.${ext}",
+    "artifactName": "IQQI-AGENT-${version}-${os}-${arch}.${ext}",
     "icon": "assets/icon",
     "directories": {
       "output": "release"
@@ -185,11 +185,11 @@
       "entitlements": "electron/entitlements.mac.plist",
       "entitlementsInherit": "electron/entitlements.mac.inherit.plist",
       "extendInfo": {
-        "CFBundleDisplayName": "Hermes",
+        "CFBundleDisplayName": "IQQI-AGENT",
         "CFBundleExecutable": "Hermes",
-        "CFBundleName": "Hermes",
-        "NSAudioCaptureUsageDescription": "Hermes uses audio capture for voice conversations.",
-        "NSMicrophoneUsageDescription": "Hermes uses the microphone for voice input and voice conversations."
+        "CFBundleName": "IQQI-AGENT",
+        "NSAudioCaptureUsageDescription": "IQQI-AGENT uses audio capture for voice conversations.",
+        "NSMicrophoneUsageDescription": "IQQI-AGENT uses the microphone for voice input and voice conversations."
       },
       "gatekeeperAssess": false,
       "hardenedRuntime": true,
@@ -199,7 +199,7 @@
       ]
     },
     "dmg": {
-      "title": "Install Hermes",
+      "title": "Install IQQI-AGENT",
       "backgroundColor": "#f5f5f7",
       "iconSize": 96,
       "window": {
@@ -221,7 +221,7 @@
       ]
     },
     "win": {
-      "legalTrademarks": "Hermes",
+      "legalTrademarks": "IQQI-AGENT",
       "target": [
         "nsis",
         "msi"
@@ -230,8 +230,8 @@
     },
     "linux": {
       "category": "Development",
-      "maintainer": "Nous Research <support@nousresearch.com>",
-      "synopsis": "Native desktop shell for Hermes Agent.",
+      "maintainer": "IQQI",
+      "synopsis": "Native desktop shell for IQQI-AGENT.",
       "target": [
         "AppImage",
         "deb",
@@ -242,8 +242,8 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "perMachine": false,
-      "shortcutName": "Hermes",
-      "uninstallDisplayName": "Hermes",
+      "shortcutName": "IQQI-AGENT",
+      "uninstallDisplayName": "IQQI-AGENT",
       "warningsAsErrors": false
     }
   }
