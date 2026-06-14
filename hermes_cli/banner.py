@@ -61,28 +61,28 @@ def _skin_color(key: str, fallback: str) -> str:
 
 from hermes_cli import __version__ as VERSION, __release_date__ as RELEASE_DATE
 
-HERMES_AGENT_LOGO = """[bold #FFD700]██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗       █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
-[bold #FFD700]██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
-[#FFBF00]███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
-[#FFBF00]██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
-[#CD7F32]██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#CD7F32]╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]"""
+HERMES_AGENT_LOGO = """[bold #7DD3FC]██╗ ██████╗  ██████╗ ██╗      █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
+[bold #38BDF8]██║██╔═══██╗██╔═══██╗██║     ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
+[#189BFF]██║██║   ██║██║   ██║██║     ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
+[#189BFF]██║██║▄▄ ██║██║▄▄ ██║██║     ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
+[#0EA5E9]██║╚██████╔╝╚██████╔╝██║     ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
+[#075985]╚═╝ ╚══▀▀═╝  ╚══▀▀═╝ ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]"""
 
-HERMES_CADUCEUS = """[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#CD7F32]⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣇⠸⣿⣿⠇⣸⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀[/]
-[#FFBF00]⠀⢀⣠⣴⣶⠿⠋⣩⡿⣿⡿⠻⣿⡇⢠⡄⢸⣿⠟⢿⣿⢿⣍⠙⠿⣶⣦⣄⡀⠀[/]
-[#FFBF00]⠀⠀⠉⠉⠁⠶⠟⠋⠀⠉⠀⢀⣈⣁⡈⢁⣈⣁⡀⠀⠉⠀⠙⠻⠶⠈⠉⠉⠀⠀[/]
-[#FFD700]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⠛⢁⡈⠛⢿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#FFD700]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⣿⣦⣤⣈⠁⢠⣴⣿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#FFBF00]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠻⢿⣿⣦⡉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#FFBF00]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣦⣈⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⠦⠈⠙⠿⣦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣤⡈⠁⢤⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠷⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠑⢶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠁⢰⡆⠈⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⠈⣡⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]"""
+HERMES_CADUCEUS = """[#075985]          ╭────────────────────╮          [/]
+[#0EA5E9]          │      IQQI-AGENT     │          [/]
+[#38BDF8]          ╰────────────────────╯          [/]
+[#7DD3FC]                    ◆                    [/]
+[#38BDF8]                 ◆  │  ◆                 [/]
+[#189BFF]              ◆─────┼─────◆              [/]
+[#0EA5E9]                 ◆  │  ◆                 [/]
+[#075985]                    ◆                    [/]
+[#38BDF8]              intelligence layer          [/]
+[#189BFF]              pricing · dashboards        [/]
+[#7DD3FC]              client operations           [/]
+[#075985]                                            [/]
+[#0EA5E9]            ready for orchestration       [/]
+[#075985]                                            [/]
+[#38BDF8]                 IQQI ecosystem           [/]"""
 
 
 
@@ -475,7 +475,7 @@ def get_latest_release_tag(repo_dir: Optional[Path] = None) -> Optional[tuple]:
 
 def format_banner_version_label() -> str:
     """Return the version label shown in the startup banner title."""
-    base = f"Hermes Agent v{VERSION} ({RELEASE_DATE})"
+    base = f"IQQI-AGENT v{VERSION} ({RELEASE_DATE})"
     state = get_git_banner_state()
     if not state:
         return base
@@ -594,10 +594,10 @@ def build_welcome_banner(console: "Console", model: str, cwd: str,
     layout_table.add_column("right", justify="left")
 
     # Resolve skin colors once for the entire banner
-    accent = _skin_color("banner_accent", "#FFBF00")
-    dim = _skin_color("banner_dim", "#B8860B")
-    text = _skin_color("banner_text", "#FFF8DC")
-    session_color = _skin_color("session_border", "#8B8682")
+    accent = _skin_color("banner_accent", "#38BDF8")
+    dim = _skin_color("banner_dim", "#075985")
+    text = _skin_color("banner_text", "#DDF4FF")
+    session_color = _skin_color("session_border", "#0EA5E9")
 
     # Use skin's custom caduceus art if provided
     try:
@@ -614,7 +614,7 @@ def build_welcome_banner(console: "Console", model: str, cwd: str,
     if len(model_short) > 28:
         model_short = model_short[:25] + "..."
     ctx_str = f" [dim {dim}]·[/] [dim {dim}]{_format_context_length(context_length)} context[/]" if context_length else ""
-    left_lines.append(f"[{accent}]{model_short}[/]{ctx_str} [dim {dim}]·[/] [dim {dim}]Nous Research[/]")
+    left_lines.append(f"[{accent}]{model_short}[/]{ctx_str} [dim {dim}]·[/] [dim {dim}]IQQI Ecosystem[/]")
 
     if os.getenv("HERMES_YOLO_MODE"):
         left_lines.append(f"[bold red]⚠ YOLO mode[/] [dim {dim}]— all approval prompts bypassed[/]")
@@ -810,8 +810,8 @@ def build_welcome_banner(console: "Console", model: str, cwd: str,
     right_content = "\n".join(right_lines)
     layout_table.add_row(left_content, right_content)
 
-    title_color = _skin_color("banner_title", "#FFD700")
-    border_color = _skin_color("banner_border", "#CD7F32")
+    title_color = _skin_color("banner_title", "#7DD3FC")
+    border_color = _skin_color("banner_border", "#189BFF")
     version_label = format_banner_version_label()
     release_info = get_latest_release_tag()
     if release_info:

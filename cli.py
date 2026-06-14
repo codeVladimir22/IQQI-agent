@@ -1646,15 +1646,15 @@ def _prune_orphaned_branches(repo_root: str) -> None:
 # ASCII Art & Branding
 # ============================================================================
 
-# Color palette (hex colors for Rich markup):
-# - Gold: #FFD700 (headers, highlights)
-# - Amber: #FFBF00 (secondary highlights)
-# - Bronze: #CD7F32 (tertiary elements)
-# - Light: #FFF8DC (text)
-# - Dim: #B8860B (muted text)
+# IQQI color palette (hex colors for Rich markup):
+# - Sky: #7DD3FC (headers, highlights)
+# - Cyan: #38BDF8 (secondary highlights)
+# - Blue: #189BFF (rules, borders)
+# - Light: #DDF4FF (text)
+# - Deep: #075985 (muted text)
 
 # ANSI building blocks for conversation display
-_ACCENT_ANSI_DEFAULT = "\033[1;38;2;255;215;0m"  # True-color #FFD700 bold — fallback
+_ACCENT_ANSI_DEFAULT = "\033[1;38;2;56;189;248m"  # True-color #38BDF8 bold fallback
 _BOLD = "\033[1m"
 _RST = "\033[0m"
 _STREAM_PAD = "    "  # 4-space indent for streamed response text (matches Panel padding)
@@ -1873,6 +1873,11 @@ _LIGHT_MODE_REMAP: dict[str, str] = {
     "#FFF0D4": "#1A1A1A",
     "#CD7F32": "#8A4F1A",   # bronze -> darker bronze
     "#FFEFB5": "#3A2A00",
+    "#DDF4FF": "#0B1F30",   # IQQI light text -> deep blue
+    "#7DD3FC": "#075985",   # IQQI sky -> deep cyan
+    "#38BDF8": "#0369A1",   # IQQI cyan -> strong blue
+    "#189BFF": "#075985",   # IQQI border -> deep cyan
+    "#0EA5E9": "#075985",   # IQQI muted -> deep cyan
     # NOTE: skipping #C0C0C0/#888888/#555555/#8B8682 — those are
     # status-bar foregrounds paired with dark navy bg, where dark
     # remap values would become invisible.
@@ -2909,30 +2914,30 @@ class ChatConsole:
         """
         yield self
 
-# ASCII Art - HERMES-AGENT logo (full width, single line - requires ~95 char terminal)
-HERMES_AGENT_LOGO = """[bold #FFD700]██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗       █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
-[bold #FFD700]██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
-[#FFBF00]███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
-[#FFBF00]██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
-[#CD7F32]██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#CD7F32]╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]"""
+# ASCII Art - IQQI-AGENT logo (full width, single line - requires ~95 char terminal)
+HERMES_AGENT_LOGO = """[bold #7DD3FC]██╗ ██████╗  ██████╗ ██╗      █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
+[bold #38BDF8]██║██╔═══██╗██╔═══██╗██║     ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
+[#189BFF]██║██║   ██║██║   ██║██║     ███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
+[#189BFF]██║██║▄▄ ██║██║▄▄ ██║██║     ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
+[#0EA5E9]██║╚██████╔╝╚██████╔╝██║     ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
+[#075985]╚═╝ ╚══▀▀═╝  ╚══▀▀═╝ ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]"""
 
-# ASCII Art - Hermes Caduceus (compact, fits in left panel)
-HERMES_CADUCEUS = """[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#CD7F32]⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣇⠸⣿⣿⠇⣸⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀[/]
-[#FFBF00]⠀⢀⣠⣴⣶⠿⠋⣩⡿⣿⡿⠻⣿⡇⢠⡄⢸⣿⠟⢿⣿⢿⣍⠙⠿⣶⣦⣄⡀⠀[/]
-[#FFBF00]⠀⠀⠉⠉⠁⠶⠟⠋⠀⠉⠀⢀⣈⣁⡈⢁⣈⣁⡀⠀⠉⠀⠙⠻⠶⠈⠉⠉⠀⠀[/]
-[#FFD700]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⠛⢁⡈⠛⢿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#FFD700]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⣿⣦⣤⣈⠁⢠⣴⣿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#FFBF00]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠻⢿⣿⣦⡉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#FFBF00]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣦⣈⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⠦⠈⠙⠿⣦⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣤⡈⠁⢤⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠷⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠑⢶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠁⢰⡆⠈⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⠈⣡⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#B8860B]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]"""
+# ASCII Art - IQQI hero mark (compact, fits in left panel)
+HERMES_CADUCEUS = """[#075985]          ╭────────────────────╮          [/]
+[#0EA5E9]          │      IQQI-AGENT     │          [/]
+[#38BDF8]          ╰────────────────────╯          [/]
+[#7DD3FC]                    ◆                    [/]
+[#38BDF8]                 ◆  │  ◆                 [/]
+[#189BFF]              ◆─────┼─────◆              [/]
+[#0EA5E9]                 ◆  │  ◆                 [/]
+[#075985]                    ◆                    [/]
+[#38BDF8]              intelligence layer          [/]
+[#189BFF]              pricing · dashboards        [/]
+[#7DD3FC]              client operations           [/]
+[#075985]                                            [/]
+[#0EA5E9]            ready for orchestration       [/]
+[#075985]                                            [/]
+[#38BDF8]                 IQQI ecosystem           [/]"""
 
 
 
@@ -2953,7 +2958,7 @@ def _build_compact_banner() -> str:
         line1 = "⚕ NOUS HERMES - AI Agent Framework"
         tiny_line = "⚕ NOUS HERMES"
     else:
-        agent_name = _skin.get_branding("agent_name", "Hermes Agent") if _skin else "Hermes Agent"
+        agent_name = _skin.get_branding("agent_name", "IQQI-AGENT") if _skin else "IQQI-AGENT"
         line1 = f"{agent_name} - AI Agent Framework"
         tiny_line = agent_name
 
@@ -2961,13 +2966,13 @@ def _build_compact_banner() -> str:
         from hermes_cli import __release_date__ as _release_date
         from hermes_cli import __version__ as _version
 
-        version_line = f"Hermes Agent v{_version} ({_release_date})"
+        version_line = f"IQQI-AGENT v{_version} ({_release_date})"
     else:
         version_line = format_banner_version_label()
 
     w = min(shutil.get_terminal_size().columns - 2, 88)
     if w < 30:
-        return f"\n[{title_color}]{tiny_line}[/] [dim {dim_color}]- Nous Research[/]\n"
+        return f"\n[{title_color}]{tiny_line}[/] [dim {dim_color}]- IQQI Ecosystem[/]\n"
 
     inner = w - 2  # inside the box border
     bar = "═" * w
@@ -4828,11 +4833,11 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
             try:
                 from hermes_cli.skin_engine import get_active_skin
                 _skin = get_active_skin()
-                label = _skin.get_branding("response_label", "⚕ Hermes")
-                _text_hex = _skin.get_color("banner_text", "#FFF8DC")
+                label = _skin.get_branding("response_label", "IQQI")
+                _text_hex = _skin.get_color("banner_text", "#DDF4FF")
             except Exception:
-                label = "⚕ Hermes"
-                _text_hex = "#FFF8DC"
+                label = "IQQI"
+                _text_hex = "#DDF4FF"
             # Build a true-color ANSI escape for the response text color
             # so streamed content matches the Rich Panel appearance.
             try:
@@ -5171,8 +5176,8 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
         if is_nous_hermes_non_agentic(model_name):
             self._console_print()
             self._console_print(
-                "[bold yellow]⚠  Nous Research Hermes 3 & 4 models are NOT agentic and are not "
-                "designed for use with Hermes Agent.[/]"
+                "[bold yellow]⚠  Hermes 3 & 4 models are NOT agentic and are not "
+                "designed for use with IQQI-AGENT.[/]"
             )
             self._console_print(
                 "[dim]   They lack tool-calling capabilities required for agent workflows. "
@@ -10112,7 +10117,7 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
                     if not _streaming_box_opened:
                         _streaming_box_opened = True
                         w = self._scrollback_box_width(getattr(self.console, "width", 80))
-                        label = " ⚕ Hermes "
+                        label = " IQQI "
                         if self.show_timestamps:
                             label = f"{label}{datetime.now().strftime('%H:%M')} "
                         fill = w - 2 - HermesCLI._status_bar_display_width(label)
@@ -10454,13 +10459,13 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
                 try:
                     from hermes_cli.skin_engine import get_active_skin
                     _skin = get_active_skin()
-                    label = _skin.get_branding("response_label", "⚕ Hermes")
-                    _resp_color = _maybe_remap_for_light_mode(_skin.get_color("response_border", "#CD7F32"))
-                    _resp_text = _maybe_remap_for_light_mode(_skin.get_color("banner_text", "#FFF8DC"))
+                    label = _skin.get_branding("response_label", "IQQI")
+                    _resp_color = _maybe_remap_for_light_mode(_skin.get_color("response_border", "#38BDF8"))
+                    _resp_text = _maybe_remap_for_light_mode(_skin.get_color("banner_text", "#DDF4FF"))
                 except Exception:
-                    label = "⚕ Hermes"
-                    _resp_color = _maybe_remap_for_light_mode("#CD7F32")
-                    _resp_text = _maybe_remap_for_light_mode("#FFF8DC")
+                    label = "IQQI"
+                    _resp_color = _maybe_remap_for_light_mode("#189BFF")
+                    _resp_text = _maybe_remap_for_light_mode("#DDF4FF")
 
                 is_error_response = result and (result.get("failed") or result.get("partial"))
                 already_streamed = self._stream_started and self._stream_box_opened and not is_error_response
@@ -10918,11 +10923,11 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
         try:
             from hermes_cli.skin_engine import get_active_skin
             _welcome_skin = get_active_skin()
-            _welcome_text = _welcome_skin.get_branding("welcome", "Welcome to Hermes Agent! Type your message or /help for commands.")
-            _welcome_color = _welcome_skin.get_color("banner_text", "#FFF8DC")
+            _welcome_text = _welcome_skin.get_branding("welcome", "Welcome to IQQI-AGENT! Type your message or /help for commands.")
+            _welcome_color = _welcome_skin.get_color("banner_text", "#DDF4FF")
         except Exception:
-            _welcome_text = "Welcome to Hermes Agent! Type your message or /help for commands."
-            _welcome_color = "#FFF8DC"
+            _welcome_text = "Welcome to IQQI-AGENT! Type your message or /help for commands."
+            _welcome_color = "#DDF4FF"
         self._console_print(f"[{_welcome_color}]{_welcome_text}[/]")
 
         # Warm the /model picker's provider-models cache off-thread during this
@@ -11759,7 +11764,7 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
             import signal as _sig
             from prompt_toolkit.application import run_in_terminal
             from hermes_cli.skin_engine import get_active_skin
-            agent_name = get_active_skin().get_branding("agent_name", "Hermes Agent")
+            agent_name = get_active_skin().get_branding("agent_name", "IQQI-AGENT")
             msg = f"\n{agent_name} has been suspended. Run `fg` to bring {agent_name} back."
             def _suspend():
                 os.write(1, msg.encode())
@@ -12705,56 +12710,56 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
             # Input area / prompt: empty style strings inherit the
             # terminal's default foreground/background, so the typed
             # text is readable in both light and dark Terminal.app
-            # color schemes.  (Hardcoding a near-white #FFF8DC made
+            # color schemes.  (Hardcoding a near-white #DDF4FF made
             # input invisible on light backgrounds.)
             'input-area': '',
             'placeholder': '#888888 italic',
             'prompt': '',
             'prompt-working': '#888888 italic',
             'hint': '#888888 italic',
-            'status-bar': 'bg:#1a1a2e #C0C0C0',
-            'status-bar-strong': 'bg:#1a1a2e #FFD700 bold',
-            'status-bar-dim': 'bg:#1a1a2e #8B8682',
-            'status-bar-good': 'bg:#1a1a2e #8FBC8F bold',
-            'status-bar-warn': 'bg:#1a1a2e #FFD700 bold',
-            'status-bar-bad': 'bg:#1a1a2e #FF8C00 bold',
-            'status-bar-critical': 'bg:#1a1a2e #FF6B6B bold',
-            'status-bar-yolo': 'bg:#1a1a2e #FF4444 bold',
-            # Bronze horizontal rules around the input area
-            'input-rule': '#CD7F32',
+            'status-bar': 'bg:#071A2F #DDF4FF',
+            'status-bar-strong': 'bg:#071A2F #7DD3FC bold',
+            'status-bar-dim': 'bg:#071A2F #0EA5E9',
+            'status-bar-good': 'bg:#071A2F #8FBC8F bold',
+            'status-bar-warn': 'bg:#071A2F #38BDF8 bold',
+            'status-bar-bad': 'bg:#071A2F #FF8C00 bold',
+            'status-bar-critical': 'bg:#071A2F #FF6B6B bold',
+            'status-bar-yolo': 'bg:#071A2F #FF4444 bold',
+            # IQQI blue horizontal rules around the input area
+            'input-rule': '#189BFF',
             # Clipboard image attachment badges
-            'image-badge': '#87CEEB bold',
-            'completion-menu': 'bg:#1a1a2e #FFF8DC',
-            'completion-menu.completion': 'bg:#1a1a2e #FFF8DC',
-            'completion-menu.completion.current': 'bg:#333355 #FFD700',
-            'completion-menu.meta.completion': 'bg:#1a1a2e #888888',
-            'completion-menu.meta.completion.current': 'bg:#333355 #FFBF00',
+            'image-badge': '#38BDF8 bold',
+            'completion-menu': 'bg:#071A2F #DDF4FF',
+            'completion-menu.completion': 'bg:#071A2F #DDF4FF',
+            'completion-menu.completion.current': 'bg:#082F49 #7DD3FC',
+            'completion-menu.meta.completion': 'bg:#071A2F #0EA5E9',
+            'completion-menu.meta.completion.current': 'bg:#082F49 #38BDF8',
             # Clarify question panel
-            'clarify-border': '#CD7F32',
-            'clarify-title': '#FFD700 bold',
-            'clarify-question': '#FFF8DC bold',
+            'clarify-border': '#189BFF',
+            'clarify-title': '#7DD3FC bold',
+            'clarify-question': '#DDF4FF bold',
             'clarify-choice': '#AAAAAA',
-            'clarify-selected': '#FFD700 bold',
-            'clarify-active-other': '#FFD700 italic',
-            'clarify-countdown': '#CD7F32',
+            'clarify-selected': '#38BDF8 bold',
+            'clarify-active-other': '#38BDF8 italic',
+            'clarify-countdown': '#0EA5E9',
             # Sudo password panel
             'sudo-prompt': '#FF6B6B bold',
-            'sudo-border': '#CD7F32',
+            'sudo-border': '#189BFF',
             'sudo-title': '#FF6B6B bold',
-            'sudo-text': '#FFF8DC',
+            'sudo-text': '#DDF4FF',
             # Dangerous command approval panel
-            'approval-border': '#CD7F32',
+            'approval-border': '#189BFF',
             'approval-title': '#FF8C00 bold',
-            'approval-desc': '#FFF8DC bold',
+            'approval-desc': '#DDF4FF bold',
             'approval-cmd': '#AAAAAA italic',
             'approval-choice': '#AAAAAA',
-            'approval-selected': '#FFD700 bold',
+            'approval-selected': '#38BDF8 bold',
             # Voice mode
-            'voice-prompt': '#87CEEB',
+            'voice-prompt': '#38BDF8',
             'voice-recording': '#FF4444 bold',
             'voice-processing': '#FFA500 italic',
-            'voice-status': 'bg:#1a1a2e #87CEEB',
-            'voice-status-recording': 'bg:#1a1a2e #FF4444 bold',
+            'voice-status': 'bg:#071A2F #38BDF8',
+            'voice-status-recording': 'bg:#071A2F #FF4444 bold',
         }
         style = PTStyle.from_dict(self._build_tui_style_dict())
         

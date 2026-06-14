@@ -65,10 +65,10 @@ All fields are optional. Missing values inherit from the ``default`` skin.
 
     # Branding: text strings used throughout the CLI
     branding:
-      agent_name: "Hermes Agent"          # Banner title, status display
+      agent_name: "IQQI-AGENT"           # Banner title, status display
       welcome: "Welcome message"          # Shown at CLI startup
-      goodbye: "Goodbye! ⚕"              # Shown on exit
-      response_label: " ⚕ Hermes "       # Response box header label
+      goodbye: "Goodbye from IQQI."      # Shown on exit
+      response_label: " IQQI "           # Response box header label
       prompt_symbol: "❯"                 # Input prompt symbol (bare token; renderers add trailing space)
       help_header: "(^_^)? Commands"      # /help header text
 
@@ -90,7 +90,7 @@ USAGE
 
     skin = get_active_skin()
     print(skin.colors["banner_title"])    # "#FFD700"
-    print(skin.get_branding("agent_name"))  # "Hermes Agent"
+    print(skin.get_branding("agent_name"))  # "IQQI-AGENT"
 
     set_active_skin("ares")               # Switch to built-in ares skin
     set_active_skin("mytheme")            # Switch to user skin from ~/.hermes/skins/
@@ -166,31 +166,31 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         "name": "default",
         "description": "Classic Hermes — gold and kawaii",
         "colors": {
-            "banner_border": "#CD7F32",
-            "banner_title": "#FFD700",
-            "banner_accent": "#FFBF00",
-            "banner_dim": "#B8860B",
-            "banner_text": "#FFF8DC",
-            "ui_accent": "#FFBF00",
-            "ui_label": "#DAA520",
+            "banner_border": "#189BFF",
+            "banner_title": "#7DD3FC",
+            "banner_accent": "#38BDF8",
+            "banner_dim": "#075985",
+            "banner_text": "#DDF4FF",
+            "ui_accent": "#38BDF8",
+            "ui_label": "#7DD3FC",
             "ui_ok": "#4caf50",
             "ui_error": "#ef5350",
             "ui_warn": "#ffa726",
-            "prompt": "#FFF8DC",
-            "input_rule": "#CD7F32",
-            "response_border": "#FFD700",
-            "status_bar_bg": "#1a1a2e",
-            "session_label": "#DAA520",
-            "session_border": "#8B8682",
+            "prompt": "#DDF4FF",
+            "input_rule": "#189BFF",
+            "response_border": "#38BDF8",
+            "status_bar_bg": "#071A2F",
+            "session_label": "#7DD3FC",
+            "session_border": "#0EA5E9",
         },
         "spinner": {
             # Empty = use hardcoded defaults in display.py
         },
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "agent_name": "IQQI-AGENT",
+            "welcome": "Welcome to IQQI-AGENT! Type your message or /help for commands.",
+            "goodbye": "Goodbye from IQQI.",
+            "response_label": " IQQI ",
             "prompt_symbol": "❯",
             "help_header": "(^_^)? Available Commands",
         },
@@ -298,10 +298,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "agent_name": "IQQI-AGENT",
+            "welcome": "Welcome to IQQI-AGENT! Type your message or /help for commands.",
+            "goodbye": "Goodbye from IQQI.",
+            "response_label": " IQQI ",
             "prompt_symbol": "❯",
             "help_header": "[?] Available Commands",
         },
@@ -337,10 +337,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "agent_name": "IQQI-AGENT",
+            "welcome": "Welcome to IQQI-AGENT! Type your message or /help for commands.",
+            "goodbye": "Goodbye from IQQI.",
+            "response_label": " IQQI ",
             "prompt_symbol": "❯",
             "help_header": "(^_^)? Available Commands",
         },
@@ -374,10 +374,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "agent_name": "IQQI-AGENT",
+            "welcome": "Welcome to IQQI-AGENT! Type your message or /help for commands.",
+            "goodbye": "Goodbye from IQQI.",
+            "response_label": " IQQI ",
             "prompt_symbol": "❯",
             "help_header": "[?] Available Commands",
         },
@@ -411,10 +411,10 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         },
         "spinner": {},
         "branding": {
-            "agent_name": "Hermes Agent",
-            "welcome": "Welcome to Hermes Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! \u2695",
-            "response_label": " \u2695 Hermes ",
+            "agent_name": "IQQI-AGENT",
+            "welcome": "Welcome to IQQI-AGENT! Type your message or /help for commands.",
+            "goodbye": "Goodbye from IQQI.",
+            "response_label": " IQQI ",
             "prompt_symbol": "\u276f",
             "help_header": "(^_^)? Available Commands",
         },
@@ -834,7 +834,7 @@ def get_active_help_header(fallback: str = "(^_^)? Available Commands") -> str:
 
 
 
-def get_active_goodbye(fallback: str = "Goodbye! ⚕") -> str:
+def get_active_goodbye(fallback: str = "Goodbye from IQQI.") -> str:
     """Get the goodbye line from the active skin."""
     try:
         return get_active_skin().get_branding("goodbye", fallback)
