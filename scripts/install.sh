@@ -6,7 +6,7 @@
 # Uses uv for desktop/server installs and Python's stdlib venv + pip on Termux.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.sh | bash
+#   curl -fsSL https://install.iqqi.ai/agent.sh | bash
 #
 # Or with options:
 #   curl -fsSL ... | bash -s -- --no-venv --skip-setup
@@ -43,8 +43,9 @@ NC='\033[0m' # No Color
 BOLD='\033[1m'
 
 # Configuration
-REPO_URL_SSH="git@github.com:codeVladimir22/IQQI-agent.git"
-REPO_URL_HTTPS="https://github.com/codeVladimir22/IQQI-agent.git"
+IQQI_INSTALL_BASE_URL="${IQQI_INSTALL_BASE_URL:-https://install.iqqi.ai}"
+REPO_URL_SSH="${IQQI_REPO_URL_SSH:-git@git.iqqi.ai:iqqi/IQQI-agent.git}"
+REPO_URL_HTTPS="${IQQI_REPO_URL_HTTPS:-https://git.iqqi.ai/IQQI-agent.git}"
 HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
 # INSTALL_DIR is resolved AFTER arg parsing and OS detection so we can pick an
 # FHS-style layout for root installs.  Track whether the user gave us an
@@ -453,7 +454,7 @@ detect_os() {
             OS="windows"
             DISTRO="windows"
             log_error "Windows detected. Please use the PowerShell installer:"
-            log_info "  iex (irm https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.ps1)"
+            log_info "  iex (irm https://install.iqqi.ai/agent.ps1)"
             exit 1
             ;;
         *)

@@ -121,8 +121,8 @@ _UPDATE_CHECK_CACHE_SECONDS = 6 * 3600
 # (e.g. nix-built hermes — no local git history to count against).
 UPDATE_AVAILABLE_NO_COUNT = -1
 
-_UPSTREAM_REPO_URL = "https://github.com/codeVladimir22/IQQI-agent.git"
-_OFFICIAL_REPO_CANONICAL = "github.com/codevladimir22/iqqi-agent"
+_UPSTREAM_REPO_URL = "https://git.iqqi.ai/IQQI-agent.git"
+_OFFICIAL_REPO_CANONICAL = "git.iqqi.ai/iqqi-agent"
 
 
 def _canonical_github_remote(url: str | None) -> str:
@@ -132,8 +132,12 @@ def _canonical_github_remote(url: str | None) -> str:
     value = url.strip()
     if value.startswith("git@github.com:"):
         value = "github.com/" + value[len("git@github.com:"):]
+    elif value.startswith("git@git.iqqi.ai:iqqi/"):
+        value = "git.iqqi.ai/" + value[len("git@git.iqqi.ai:iqqi/"):]
     elif value.startswith("ssh://git@github.com/"):
         value = "github.com/" + value[len("ssh://git@github.com/"):]
+    elif value.startswith("ssh://git@git.iqqi.ai/iqqi/"):
+        value = "git.iqqi.ai/" + value[len("ssh://git@git.iqqi.ai/iqqi/"):]
     else:
         parsed = urlparse(value)
         if parsed.netloc and parsed.path:
@@ -427,7 +431,7 @@ def get_git_banner_state(repo_dir: Optional[Path] = None) -> Optional[dict]:
     return {"upstream": upstream, "local": local, "ahead": max(ahead, 0)}
 
 
-_RELEASE_URL_BASE = "https://github.com/codeVladimir22/IQQI-agent/releases/tag"
+_RELEASE_URL_BASE = "https://install.iqqi.ai/releases"
 _latest_release_cache: Optional[tuple] = None  # (tag, url) once resolved
 
 
@@ -436,7 +440,7 @@ def get_latest_release_tag(repo_dir: Optional[Path] = None) -> Optional[tuple]:
 
     Local-only — runs ``git describe --tags --abbrev=0`` against the
     Hermes checkout. Cached per-process. Release URL always points at the
-    canonical codeVladimir22/IQQI-agent repo (forks don't get a link).
+    canonical IQQI-AGENT distribution endpoint (forks don't get a link).
     """
     global _latest_release_cache
     if _latest_release_cache is not None:

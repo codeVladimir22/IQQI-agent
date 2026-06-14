@@ -5,7 +5,7 @@
 # Uses uv for fast Python provisioning and package management.
 #
 # Usage:
-#   iex (irm https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.ps1)
+#   iex (irm https://install.iqqi.ai/agent.ps1)
 #
 # Or download and run with options:
 #   .\install.ps1 -NoVenv -SkipSetup
@@ -92,8 +92,9 @@ try {
 # Configuration
 # ============================================================================
 
-$RepoUrlSsh = "git@github.com:codeVladimir22/IQQI-agent.git"
-$RepoUrlHttps = "https://github.com/codeVladimir22/IQQI-agent.git"
+$InstallBaseUrl = if ($env:IQQI_INSTALL_BASE_URL) { $env:IQQI_INSTALL_BASE_URL.TrimEnd("/") } else { "https://install.iqqi.ai" }
+$RepoUrlSsh = if ($env:IQQI_REPO_URL_SSH) { $env:IQQI_REPO_URL_SSH } else { "git@git.iqqi.ai:iqqi/IQQI-agent.git" }
+$RepoUrlHttps = if ($env:IQQI_REPO_URL_HTTPS) { $env:IQQI_REPO_URL_HTTPS } else { "https://git.iqqi.ai/IQQI-agent.git" }
 $PythonVersion = "3.11"
 $NodeVersion = "22"
 
@@ -1315,13 +1316,13 @@ function Install-Repository {
                 # for.  GitHub supports archive URLs for commits, tags, and
                 # branches; we honour Commit > Tag > Branch.
                 if ($Commit) {
-                    $zipUrl = "https://github.com/codeVladimir22/IQQI-agent/archive/$Commit.zip"
+                    $zipUrl = "$InstallBaseUrl/archive/$Commit.zip"
                     $zipLabel = $Commit
                 } elseif ($Tag) {
-                    $zipUrl = "https://github.com/codeVladimir22/IQQI-agent/archive/refs/tags/$Tag.zip"
+                    $zipUrl = "$InstallBaseUrl/archive/refs/tags/$Tag.zip"
                     $zipLabel = $Tag
                 } else {
-                    $zipUrl = "https://github.com/codeVladimir22/IQQI-agent/archive/refs/heads/$Branch.zip"
+                    $zipUrl = "$InstallBaseUrl/archive/refs/heads/$Branch.zip"
                     $zipLabel = $Branch
                 }
                 $zipPath = "$env:TEMP\hermes-agent-$zipLabel.zip"
@@ -3094,7 +3095,7 @@ try {
     Write-Err "Installation failed: $_"
     Write-Host ""
     Write-Info "If the error is unclear, try downloading and running the script directly:"
-    Write-Host "  Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/develop/scripts/install.ps1' -OutFile install.ps1" -ForegroundColor Yellow
+    Write-Host "  Invoke-WebRequest -Uri 'https://install.iqqi.ai/agent.ps1' -OutFile install.ps1" -ForegroundColor Yellow
     Write-Host "  .\install.ps1" -ForegroundColor Yellow
     Write-Host ""
 }

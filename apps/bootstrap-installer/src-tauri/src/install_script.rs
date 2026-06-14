@@ -189,7 +189,7 @@ fn truncate_ref(s: &str) -> &str {
 /// `dest_path.tmp` → `dest_path` so partial writes don't poison the cache.
 async fn download(kind: ScriptKind, commit_or_ref: &str, dest_path: &Path) -> Result<()> {
     let url = format!(
-        "https://raw.githubusercontent.com/codeVladimir22/IQQI-agent/{}/scripts/{}",
+        "https://install.iqqi.ai/scripts/{}/{}",
         commit_or_ref,
         kind.filename()
     );
