@@ -2,6 +2,18 @@
 
 This phase moves public installation and bootstrap URLs behind IQQI-owned domains.
 
+## What is required
+
+To make the public URLs work, IQQI needs three pieces:
+
+| Piece | Required for | Notes |
+| --- | --- | --- |
+| DNS control for `iqqi.ai` | `install.iqqi.ai` and `git.iqqi.ai` | Add records where the domain is managed. |
+| A static/proxy service | Installer scripts, archives, bootstrap scripts | Cloudflare Worker, Cloudflare Pages, Vercel, S3 + CDN, or any HTTPS service works. |
+| A Git mirror or HTTPS proxy | Clone/update remotes | `git.iqqi.ai` can be a GitHub Enterprise/mirror, a reverse proxy, or a later private distribution service. |
+
+If DNS is not ready, deploy the proxy under a provider URL first, such as a Cloudflare `*.workers.dev` URL, then set `IQQI_INSTALL_BASE_URL` to that temporary endpoint for tests.
+
 ## Public install commands
 
 Linux, macOS, WSL, VPS:
@@ -56,3 +68,50 @@ Installers support environment overrides while the IQQI distribution endpoints a
 | `IQQI_REPO_URL_SSH` | SSH clone/update remote. |
 
 Keep the public commands stable even if the backend implementation changes from GitHub proxying to signed release bundles.
+
+## Consumable proxy template
+
+The repository includes a Cloudflare Worker template:
+
+```text
+packaging/iqqi-distribution/cloudflare-worker.mjs
+packaging/iqqi-distribution/wrangler.example.toml
+packaging/iqqi-distribution/iqqi-distribution.env.example
+```
+
+The Worker serves:
+
+```text
+https://install.iqqi.ai/agent.sh
+https://install.iqqi.ai/agent.ps1
+https://install.iqqi.ai/agent.cmd
+https://install.iqqi.ai/scripts/<ref>/install.sh
+https://install.iqqi.ai/scripts/<ref>/install.ps1
+```
+
+It can proxy the current repository while keeping the user-facing install command clean. When release bundles are ready, replace the upstream implementation behind the same routes.
+
+## DNS shape
+
+Recommended DNS records:
+
+| Host | Type | Target |
+| --- | --- | --- |
+| `install.iqqi.ai` | CNAME | Worker/CDN/custom hosting target. |
+| `git.iqqi.ai` | CNAME | Git mirror/proxy hosting target. |
+
+For Cloudflare Workers, attach a route like:
+
+```toml
+routes = [
+  { pattern = "install.iqqi.ai/*", zone_name = "iqqi.ai" }
+]
+```
+
+For temporary testing without DNS:
+
+```toml
+workers_dev = true
+```
+
+Then use the generated `https://<worker>.<account>.workers.dev` URL as the temporary installer base.

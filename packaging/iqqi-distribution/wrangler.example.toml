@@ -1,0 +1,16 @@
+name = "iqqi-agent-distribution"
+main = "cloudflare-worker.mjs"
+compatibility_date = "2026-06-01"
+
+# Option A: use the temporary workers.dev URL first.
+# workers_dev = true
+
+# Option B: attach the custom IQQI domain when DNS is ready.
+# routes = [
+#   { pattern = "install.iqqi.ai/*", zone_name = "iqqi.ai" }
+# ]
+
+[vars]
+UPSTREAM_REPO_OWNER = "codeVladimir22"
+UPSTREAM_REPO_NAME = "IQQI-agent"
+DEFAULT_REF = "develop"
